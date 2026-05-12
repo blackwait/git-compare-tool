@@ -4,6 +4,9 @@ use std::time::Duration;
 use tokio::process::Command;
 use tokio::time::timeout;
 
+#[cfg(target_os = "windows")]
+const CREATE_NO_WINDOW: u32 = 0x08000000;
+
 #[allow(dead_code)]
 pub struct GitOutput {
     pub stdout: Vec<u8>,
@@ -20,6 +23,9 @@ pub async fn run(cwd: &str, args: &[&str], timeout_sec: u64) -> AppResult<GitOut
         .stderr(Stdio::piped())
         .env("LC_ALL", "C.UTF-8")
         .env("GIT_TERMINAL_PROMPT", "0");
+
+    #[cfg(target_os = "windows")]
+    cmd.creation_flags(CREATE_NO_WINDOW);
 
     let child = cmd.spawn().map_err(|e| match e.kind() {
         std::io::ErrorKind::NotFound => AppError::GitNotFound,
