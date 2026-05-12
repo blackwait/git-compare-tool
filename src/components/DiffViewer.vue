@@ -59,7 +59,7 @@ import { ref, computed, watch, reactive } from 'vue';
 import { NTabs, NTabPane } from 'naive-ui';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/atom-one-dark.css';
-import type { FileDiff, DiffHunk } from '../types';
+import type { FileDiff } from '../types';
 import { gitApi } from '../api/git';
 
 interface GapLine {
