@@ -55,6 +55,8 @@ pub fn run() {
             commands::git::git_list_branches,
             commands::git::git_current_branch,
             commands::git::git_fetch,
+            commands::git::git_fetch_and_pull,
+            commands::git::git_pull_branch,
             commands::git::git_diff_branches,
             commands::git::git_file_diff,
             commands::git::git_file_content,

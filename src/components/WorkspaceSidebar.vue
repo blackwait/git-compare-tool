@@ -107,11 +107,11 @@ function onDelete(w: Workspace) {
   box-sizing: border-box;
 }
 .active {
-  background: rgba(32, 128, 255, 0.1);
+  background: rgba(64, 150, 255, 0.18);
 }
 .path {
   font-size: 12px;
-  color: #888;
+  color: #b0b0b0;
   word-break: break-all;
 }
 </style>

@@ -73,6 +73,28 @@ pub async fn git_fetch(state: State<'_, AppState>, args: FetchArgs) -> AppResult
     branches::fetch(&ws.path, args.remote.as_deref()).await
 }
 
+#[tauri::command]
+pub async fn git_fetch_and_pull(state: State<'_, AppState>, args: RepoIdArgs) -> AppResult<()> {
+    let ws = find_ws(&state, &args.repo_id)?;
+    branches::fetch_and_pull(&ws.path).await
+}
+
+#[derive(Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct PullBranchArgs {
+    pub repo_id: String,
+    pub branch: String,
+}
+
+#[tauri::command]
+pub async fn git_pull_branch(
+    state: State<'_, AppState>,
+    args: PullBranchArgs,
+) -> AppResult<()> {
+    let ws = find_ws(&state, &args.repo_id)?;
+    branches::pull_branch(&ws.path, &args.branch).await
+}
+
 #[derive(Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct DiffArgs {

@@ -4,6 +4,7 @@ use std::time::Duration;
 use tokio::process::Command;
 use tokio::time::timeout;
 
+#[allow(dead_code)]
 pub struct GitOutput {
     pub stdout: Vec<u8>,
     pub stderr: String,

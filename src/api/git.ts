@@ -13,6 +13,10 @@ export const gitApi = {
   listBranches: (repoId: string) => invoke<Branch[]>('git_list_branches', { args: { repoId } }),
   fetch: (repoId: string, remote?: string) =>
     invoke<void>('git_fetch', { args: { repoId, remote } }),
+  fetchAndPull: (repoId: string) =>
+    invoke<void>('git_fetch_and_pull', { args: { repoId } }),
+  pullBranch: (repoId: string, branch: string) =>
+    invoke<void>('git_pull_branch', { args: { repoId, branch } }),
   currentBranch: (repoId: string) => invoke<string>('git_current_branch', { args: { repoId } }),
   diffBranches: (repoId: string, base: string, target: string) =>
     invoke<BranchDiff>('git_diff_branches', { args: { repoId, base, target } }),

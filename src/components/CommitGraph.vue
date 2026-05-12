@@ -17,13 +17,13 @@
           stroke="#555"
         />
         <circle r="5" :fill="c.parents.length > 1 ? '#e8c068' : '#6aa9ff'" />
-        <text x="16" y="4" fill="#aaa" font-size="11" font-family="Fira Code, monospace">
+        <text x="16" y="4" fill="#9ecbff" font-size="11" font-family="Fira Code, monospace">
           {{ c.shortHash }}
         </text>
-        <text x="100" y="4" fill="#ddd" font-size="12">
+        <text x="100" y="4" fill="#eaeaea" font-size="12">
           {{ c.message.length > 80 ? c.message.slice(0, 80) + '…' : c.message }}
         </text>
-        <text x="720" y="4" fill="#888" font-size="11">{{ c.author }}</text>
+        <text x="720" y="4" fill="#b0b0b0" font-size="11">{{ c.author }}</text>
       </g>
     </svg>
   </div>
@@ -43,12 +43,13 @@ defineProps<{ commits: Commit[] }>();
 }
 .title {
   padding: 0 12px 4px;
-  color: #aaa;
+  color: #d0d0d0;
   font-size: 12px;
+  font-weight: 600;
 }
 .hint {
   padding: 8px 12px;
-  color: #888;
+  color: #b0b0b0;
   font-size: 12px;
 }
 </style>

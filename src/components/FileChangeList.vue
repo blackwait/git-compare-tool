@@ -34,35 +34,36 @@ function badge(k: FileChange['kind']): string {
 .file-list {
   height: 100%;
   overflow: auto;
-  font-family: 'Fira Code', monospace;
+  font-family: 'JetBrains Mono', 'Microsoft YaHei', monospace;
   font-size: 12px;
 }
 .row {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 4px 8px;
+  padding: 6px 10px;
   cursor: pointer;
-  border-bottom: 1px solid #1f1f1f;
+  border-bottom: 1px solid #2b2b2b;
+  color: #ffffff;
 }
-.row:hover,
-.row.active {
-  background: rgba(32, 128, 255, 0.08);
-}
+.row:hover { background: rgba(64, 150, 255, 0.12); }
+.row.active { background: rgba(64, 150, 255, 0.22); color: #ffffff; }
 .badge {
-  width: 18px;
+  min-width: 20px;
+  height: 18px;
+  line-height: 18px;
   text-align: center;
-  border-radius: 2px;
-  font-weight: bold;
+  border-radius: 3px;
+  font-weight: 700;
+  font-size: 11px;
+  color: #ffffff;
+  padding: 0 4px;
 }
-.badge.added { background: #234d20; color: #6acf7c; }
-.badge.modified { background: #4d4120; color: #e8c068; }
-.badge.deleted { background: #4d2020; color: #ff6a6a; }
-.badge.renamed { background: #20344d; color: #6aa9ff; }
-.path {
-  flex: 1;
-  word-break: break-all;
-}
-.stat .add { color: #6acf7c; }
-.stat .del { color: #ff6a6a; margin-left: 6px; }
+.badge.added    { background: #2ea043; }
+.badge.modified { background: #d29922; }
+.badge.deleted  { background: #da3633; }
+.badge.renamed  { background: #1f6feb; }
+.path { flex: 1; word-break: break-all; color: #ffffff; }
+.stat .add { color: #56d364; font-weight: 600; }
+.stat .del { color: #ff7b72; font-weight: 600; margin-left: 6px; }
 </style>
