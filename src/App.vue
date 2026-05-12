@@ -1,9 +1,12 @@
 <template>
-  <n-config-provider :theme="darkTheme">
+  <n-config-provider :theme="effectiveTheme">
     <n-message-provider>
       <n-dialog-provider>
         <n-notification-provider>
           <div class="layout">
+            <div class="top">
+              <AppMenu />
+            </div>
             <div class="body">
               <WorkspaceSidebar />
               <main class="main">
@@ -18,6 +21,7 @@
 </template>
 
 <script setup lang="ts">
+import { computed, onMounted } from 'vue';
 import {
   NConfigProvider,
   NMessageProvider,
@@ -25,11 +29,26 @@ import {
   NNotificationProvider,
   darkTheme,
 } from 'naive-ui';
+import AppMenu from './components/AppMenu.vue';
 import WorkspaceSidebar from './components/WorkspaceSidebar.vue';
+import { useSettingsStore } from './stores/settings';
+import { useDiffStore } from './stores/diff';
+
+const s = useSettingsStore();
+const diff = useDiffStore();
+
+const effectiveTheme = computed(() => (s.theme === 'light' ? null : darkTheme));
+
+onMounted(async () => {
+  await s.load();
+  diff.viewMode = s.defaultView;
+});
 </script>
 
 <style>
-html, body, #app {
+html,
+body,
+#app {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -38,6 +57,9 @@ html, body, #app {
   display: flex;
   flex-direction: column;
   height: 100vh;
+}
+.top {
+  border-bottom: 1px solid #2a2a2a;
 }
 .body {
   flex: 1;
