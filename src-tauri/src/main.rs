@@ -2,5 +2,5 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
-    gct_tmp_lib::run()
+    git_compare_tool_lib::run()
 }
